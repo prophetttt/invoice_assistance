@@ -15,7 +15,10 @@ body {
 header {
     background-color: #2c3e50;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 1000;
     color: white;
     padding: 1rem 2rem;
     display: flex;
@@ -51,8 +54,8 @@ nav a.active {
 
 main {
     padding: 2rem;
+    margin-top: 80px;
     max-width: 1200px;
-    margin: 0 auto;
 }
 
 /* 聊天页面样式 */

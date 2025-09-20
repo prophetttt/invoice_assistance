@@ -80,3 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+// 现在可以安全使用 marked 了！
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('word_new.md')
+    .then(response => response.text())
+    .then(markdownText => {
+      // marked 已全局可用
+      document.getElementById('markdown-container').innerHTML = 
+        marked.parse(markdownText);
+    });
+});
