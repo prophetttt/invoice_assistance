@@ -12,7 +12,7 @@ class ChatAPIView(APIView):
     """
 
     def post(self, request):
-        user_query = request.data.get("query", "")
+        user_query = request.data.get("message", "")
         if not user_query:
             return Response({"error": "query is required"}, status=status.HTTP_400_BAD_REQUEST)
 

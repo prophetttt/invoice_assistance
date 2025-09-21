@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 userInput.value = '';
 
                 try {
-                    const response = await fetch('/api/chat', {
+                    const response = await fetch('/api/chat/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
