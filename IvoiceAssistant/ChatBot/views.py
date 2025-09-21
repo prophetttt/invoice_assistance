@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from ..RAG.retriever import retrieve_from_vector_database
 # Create your views here.
 
 
@@ -22,13 +23,5 @@ class ChatAPIView(APIView):
         return Response(result)
 
     def rag_pipeline(self, query: str) -> dict:
-        """
-        示例 RAG pipeline，你可以替换为自己的实现
-        """
-        # 1. 检索（伪代码）
-        docs = ["示例文档片段1", "示例文档片段2"]
-
-        # 2. 大模型生成（伪代码）
-        answer = f"这是基于 RAG 的回答，问题是：{query}"
-
-        return {"answer": answer, "docs": docs}
+        answer = retrieve_from_vector_database(query)
+        return {"reply" : answer}

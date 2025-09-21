@@ -36,24 +36,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // 处理用户输入
-        function handleUserInput() {
+        async function handleUserInput() {
             const message = userInput.value.trim();
             if (message) {
                 addUserMessage(message);
                 userInput.value = '';
-                
-                // 模拟机器人响应
-                setTimeout(() => {
-                    const responses = [
-                        "我明白了，您说的是: " + message,
-                        "这是一个有趣的问题，让我想想...",
-                        "关于" + message + "，我可以告诉您...",
-                        "感谢您的提问，我正在处理...",
-                        "我已经记录了您的问题，稍后会回复您。"
-                    ];
-                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-                    addBotMessage(randomResponse);
-                }, 800);
+
+                try {
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ message })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const data = await response.json();
+                    addBotMessage(data.reply);
+                } catch (error) {
+                    console.error('Error:', error);
+                    addBotMessage('抱歉，我无法处理您的请求，请稍后再试。');
+                }
             }
         }
         

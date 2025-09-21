@@ -236,3 +236,8 @@ ul {
         max-width: 90%;
     }
 }
+
+
+a {
+    scroll-margin-top: 70px;
+}
