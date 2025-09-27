@@ -60,7 +60,6 @@ orjson==3.11.3
 overrides==7.7.0
 packaging==25.0
 pillow==11.3.0
-pip @ file:///croot/pip_1756710021410/work
 posthog==5.4.0
 protobuf==6.32.1
 pyasn1==0.6.1
