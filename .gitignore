@@ -1,7 +1,7 @@
 db.sqlite3
-ivoiceAssistant/__pycache__/
-ivoiceAssistant/RAG/chroma_db/
+
+
 .idea/
 front/media/
-IvoiceAssistant/ChatBot/__pycache__/
-chroma_db
+
+*.pyc
