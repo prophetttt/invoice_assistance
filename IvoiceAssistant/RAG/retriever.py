@@ -31,12 +31,12 @@ def retrieve_from_vector_database(query: str) -> list[str]:
     message = [
             {
                 "role": "system",
-                "content": """你是一位专业的知识助手，需要根据提供的相关文档片段来回答用户问题。
+                "content": """你是一位专业的知识助手，名字叫做小王，需要根据提供的相关文档片段来回答用户问题。
 
         请严格遵守以下规则：
         1. 只使用提供的相关片段中的信息回答问题
         2. 如果片段中没有相关信息，请明确告知"根据现有资料无法回答该问题"
-        3. 不要编造、推测或添加片段之外的信息
+        3. 可以适当根据片段内容进行合理推测和总结，如：美国报销=其他大洲报销
         4. 保持回答准确、简洁和专业"""
             },
             {
@@ -49,7 +49,7 @@ def retrieve_from_vector_database(query: str) -> list[str]:
         请基于以上片段内容回答用户问题。"""
             },
         ]
-    print(message)
+    #print(message)
 
     response = client.chat.completions.create(
         model="deepseek-chat",
