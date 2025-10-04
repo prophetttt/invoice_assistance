@@ -19,7 +19,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'front'),  # 将 front/ 目录加入静态文件搜索路径
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 收集静态文件的目录
+STATIC_ROOT = '/var/www/html/static'  # 收集静态文件的目录
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
