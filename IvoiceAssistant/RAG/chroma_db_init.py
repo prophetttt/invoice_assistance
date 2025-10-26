@@ -11,39 +11,6 @@ logger = logging.getLogger(__name__)
 # Supported env vars: HTTP_PROXY, HTTPS_PROXY, ALL_PROXY
 # If no proxy env vars are provided, default to the local proxy at 172.25.72.41:7890
 # You can override by setting HTTP_PROXY/HTTPS_PROXY/ALL_PROXY in your environment.
-http_proxy = os.environ.get('HTTP_PROXY') or os.environ.get('http_proxy')
-https_proxy = os.environ.get('HTTPS_PROXY') or os.environ.get('https_proxy')
-all_proxy = os.environ.get('ALL_PROXY') or os.environ.get('all_proxy')
-
-# default proxy (will be used only if no env var is set)
-_default_proxy = 'http://127.0.0.1:7890'
-
-if all_proxy:
-    os.environ['HTTP_PROXY'] = all_proxy
-    os.environ['HTTPS_PROXY'] = all_proxy
-    os.environ['http_proxy'] = all_proxy
-    os.environ['https_proxy'] = all_proxy
-    logger.info('Set HTTP_PROXY/HTTPS_PROXY from ALL_PROXY')
-else:
-    if http_proxy:
-        os.environ['HTTP_PROXY'] = http_proxy
-        os.environ['http_proxy'] = http_proxy
-        logger.info('Set HTTP_PROXY')
-    else:
-        # Set default proxy when none provided
-        os.environ['HTTP_PROXY'] = _default_proxy
-        os.environ['http_proxy'] = _default_proxy
-        logger.info(f'No HTTP_PROXY provided, using default: {_default_proxy}')
-
-    if https_proxy:
-        os.environ['HTTPS_PROXY'] = https_proxy
-        os.environ['https_proxy'] = https_proxy
-        logger.info('Set HTTPS_PROXY')
-    else:
-        # Set default https proxy when none provided
-        os.environ['HTTPS_PROXY'] = _default_proxy
-        os.environ['https_proxy'] = _default_proxy
-        logger.info(f'No HTTPS_PROXY provided, using default: {_default_proxy}')
 
 # Initialize chroma client
 chromadb_client = chromadb.PersistentClient(path="./chroma_db")
